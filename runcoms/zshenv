@@ -9,3 +9,7 @@
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+# Android SDK
+export PATH=$PATH:/opt/android-sdk-linux/tools
+export PATH=$PATH:/opt/android-sdk-linux/platform-tools
