@@ -17,7 +17,7 @@ source "${ZDOTDIR:-$HOME}/.zprezto/modules/git/external/git-flow-completion.zsh"
 
 # tips from http://joshsymonds.com/blog/2014/06/12/shell-awesomeness-with-prezto/
 # only fools wouldn't do this ;-)
-export EDITOR="subl -n -w"
+#export EDITOR="subl -n -w"
 
 # Case insensitive globbing
 setopt NO_CASE_GLOB
