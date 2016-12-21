@@ -13,8 +13,7 @@ fi
 # Customize to your needs...
 
 # Add git-flow completition
-source /home/pedroxs/.zprezto/modules/git/git-flow-completition/git-flow-completion.zsh
-#fpath=("/home/pedroxs/.zprezto/modules/completion/external/src/" $fpath)
+source "${ZDOTDIR:-$HOME}/.zprezto/modules/git/external/git-flow-completion.zsh"
 
 # tips from http://joshsymonds.com/blog/2014/06/12/shell-awesomeness-with-prezto/
 # only fools wouldn't do this ;-)
@@ -28,8 +27,13 @@ setopt EXTENDED_GLOB
 alias json='python -mjson.tool'
 
 # AWS cli completition
-export PATH=/usr/local/aws/bin:$PATH
-source /usr/local/bin/aws_zsh_completer.sh
+if [[ -d /usr/local/aws/bin ]]; then
+  export PATH=/usr/local/aws/bin:$PATH
+  source /usr/local/bin/aws_zsh_completer.sh
+fi
 
-export NVM_DIR="/home/pedroxs/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# npm config
+export NPM_CONFIG_PREFIX="$HOME/.npm-global"
+if [[ ! -d "$NPM_CONFIG_PREFIX" ]]; then
+  mkdir -p "$NPM_CONFIG_PREFIX"
+fi

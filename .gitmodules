@@ -19,3 +19,6 @@
 [submodule "modules/autosuggestions/external"]
 	path = modules/autosuggestions/external
 	url = https://github.com/tarruda/zsh-autosuggestions
+[submodule "modules/git/external"]
+	path = modules/git/external
+	url = https://github.com/bobthecow/git-flow-completion.git
