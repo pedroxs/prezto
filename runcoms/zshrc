@@ -37,3 +37,9 @@ export NPM_CONFIG_PREFIX="$HOME/.npm-global"
 if [[ ! -d "$NPM_CONFIG_PREFIX" ]]; then
   mkdir -p "$NPM_CONFIG_PREFIX"
 fi
+
+# linux brew completition
+if [[ -d "$HOME/.linuxbrew" ]]; then
+  fpath=($HOME/.linuxbrew/completions/zsh $fpath)
+  fpath=($HOME/.linuxbrew/share/zsh-completions $fpath)
+fi

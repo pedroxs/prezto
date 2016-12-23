@@ -13,3 +13,7 @@ fi
 # Android SDK
 export PATH=$PATH:/opt/android-sdk-linux/tools
 export PATH=$PATH:/opt/android-sdk-linux/platform-tools
+
+# Linuxbrew
+export PATH=$PATH:$HOME/.linuxbrew/bin
+export HOMEBREW_GITHUB_API_TOKEN="57da9552dfad4309dcfb9191b681056c489163dc"
