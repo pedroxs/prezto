@@ -11,9 +11,12 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
 fi
 
 # Android SDK
-export PATH=$PATH:/opt/android-sdk-linux/tools
-export PATH=$PATH:/opt/android-sdk-linux/platform-tools
+export ANDROID_HOME=$HOME/.linuxbrew/opt/android-sdk
+export ANDROID_SDK=$HOME/.linuxbrew/opt/android-sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Linuxbrew
-export PATH=$PATH:$HOME/.linuxbrew/bin
-export HOMEBREW_GITHUB_API_TOKEN="57da9552dfad4309dcfb9191b681056c489163dc"
+export PATH=$HOME/.linuxbrew/bin:$PATH
+export HOMEBREW_GITHUB_API_TOKEN="4279cdc9dd7272cd0f260279c64386dbaa272687"
