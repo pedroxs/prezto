@@ -10,6 +10,11 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+# Source secure enviroment settings
+if [[ -s "$HOME/.secure/init.zsh" ]]; then
+  source "$HOME/.secure/init.zsh"
+fi
+
 # Android SDK
 export PATH=$PATH:/opt/android-sdk-linux/tools
 export PATH=$PATH:/opt/android-sdk-linux/platform-tools
