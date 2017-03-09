@@ -12,6 +12,9 @@ fi
 
 # Customize to your needs...
 
+# Use the builtin which command
+unalias which
+
 # Add git-flow completition
 source "${ZDOTDIR:-$HOME}/.zprezto/modules/git/external/git-flow-completion.zsh"
 
@@ -32,11 +35,9 @@ if [[ -d /usr/local/aws/bin ]]; then
   source /usr/local/bin/aws_zsh_completer.sh
 fi
 
-# npm config
-export NPM_CONFIG_PREFIX="$HOME/.npm-global"
-if [[ ! -d "$NPM_CONFIG_PREFIX" ]]; then
-  mkdir -p "$NPM_CONFIG_PREFIX"
-fi
+# nvm config
+export NVM_LAZY_LOAD=true
+source $HOME/.zsh-nvm/zsh-nvm.plugin.zsh
 
 # linux brew completition
 if [[ -d "$HOME/.linuxbrew" ]]; then

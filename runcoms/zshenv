@@ -21,4 +21,13 @@ export PATH=$PATH:/opt/android-sdk-linux/platform-tools
 
 # Linuxbrew
 export PATH=$PATH:$HOME/.linuxbrew/bin
-export HOMEBREW_GITHUB_API_TOKEN="57da9552dfad4309dcfb9191b681056c489163dc"
+
+# Go
+export GOPATH=$HOME/work/go
+export PATH=$PATH:$GOPATH/bin
+if [[ -d $GOPATH ]]; then
+  mkdir -p $GOPATH
+fi
+
+# Yarn
+export PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
