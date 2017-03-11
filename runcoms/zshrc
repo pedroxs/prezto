@@ -13,7 +13,7 @@ fi
 # Customize to your needs...
 
 # Use the builtin which command
-unalias which
+unalias which 2>/dev/null
 
 # Add git-flow completition
 source "${ZDOTDIR:-$HOME}/.zprezto/modules/git/external/git-flow-completion.zsh"
