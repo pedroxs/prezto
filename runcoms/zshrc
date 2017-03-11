@@ -12,6 +12,9 @@ fi
 
 # Customize to your needs...
 
+# Use the builtin which command
+unalias which
+
 # Add git-flow completition
 source "${ZDOTDIR:-$HOME}/.zprezto/modules/git/external/git-flow-completion.zsh"
 
@@ -34,6 +37,7 @@ fi
 
 # zsh nvm plugin
 if [[ -d "$HOME/.zsh-nvm" ]]; then
+  export NVM_LAZY_LOAD=true
   source "$HOME/.zsh-nvm/zsh-nvm.plugin.zsh"
 else
   # npm config if no nvm detected
@@ -49,9 +53,14 @@ if [[ -d "$HOME/.linuxbrew" ]]; then
   fpath=($HOME/.linuxbrew/share/zsh-completions $fpath)
 fi
 
-
 ###-tns-completion-start-###
-if [ -f /home/pedroxs/.tnsrc ]; then 
-    source /home/pedroxs/.tnsrc 
+if [ -f $HOME/.tnsrc ]; then 
+    source $HOME/.tnsrc 
 fi
 ###-tns-completion-end-###
+
+# vim settings
+if [ -e /usr/bin/vimx ]; then 
+  alias vim='/usr/bin/vimx'; 
+fi
+
