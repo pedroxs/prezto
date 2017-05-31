@@ -25,12 +25,5 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Linuxbrew
 export PATH=$PATH:$HOME/.linuxbrew/bin
 
-# Go
-export GOPATH=$HOME/work/go
-export PATH=$PATH:$GOPATH/bin
-if [[ -d $GOPATH ]]; then
-  mkdir -p $GOPATH
-fi
-
 # Yarn
 export PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
