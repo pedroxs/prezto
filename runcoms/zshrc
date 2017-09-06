@@ -35,6 +35,9 @@ if [[ -d /usr/local/aws/bin ]]; then
   source /usr/local/bin/aws_zsh_completer.sh
 fi
 
+# AWS cli completition for pip installs
+[[ -f $(which aws_zsh_completer.sh) ]] && source $(which aws_zsh_completer.sh)
+
 # zsh nvm plugin
 if [[ -d "$HOME/.zsh-nvm" ]]; then
   export NVM_LAZY_LOAD=true
