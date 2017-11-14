@@ -15,16 +15,6 @@ if [[ -s "$HOME/.secure/init.zsh" ]]; then
   source "$HOME/.secure/init.zsh"
 fi
 
-# Java
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
-
-# Android SDK
-export ANDROID_HOME=$HOME/.linuxbrew/opt/android-sdk
-export ANDROID_SDK=$HOME/.linuxbrew/opt/android-sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 # Linuxbrew
 if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
@@ -33,6 +23,15 @@ if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
 else
   export PATH=$PATH:$HOME/.linuxbrew/bin
 fi
+
+# Android SDK
+[[ -d /home/linuxbrew/.linuxbrew/Cellar/android-sdk ]] && export ANDROID_HOME=/home/linuxbrew/.linuxbrew/Cellar/android-sdk
+[[ -d $HOME/.linuxbrew/opt/android-sdk ]] && export ANDROID_HOME=$HOME/.linuxbrew/opt/android-sdk
+[[ -d /opt/android-sdk ]] && export ANDROID_HOME=/opt/android-sdk
+export ANDROID_SDK=$ANDROID_HOME
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Yarn
 export PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin

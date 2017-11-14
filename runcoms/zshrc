@@ -34,6 +34,9 @@ if [[ -d /usr/local/aws/bin ]]; then
   export PATH=/usr/local/aws/bin:$PATH
   source /usr/local/bin/aws_zsh_completer.sh
 fi
+if [[ -d $HOME/.local/bin ]]; then
+  export PATH=$HOME/.local/bin:$PATH
+fi
 
 # AWS cli completition for pip installs
 [[ -f $(which aws_zsh_completer.sh) ]] && source $(which aws_zsh_completer.sh)
@@ -54,6 +57,9 @@ fi
 if [[ -d "$HOME/.linuxbrew" ]]; then
   fpath=($HOME/.linuxbrew/completions/zsh $fpath)
   fpath=($HOME/.linuxbrew/share/zsh-completions $fpath)
+fi
+if [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
+  fpath=(/home/linuxbrew/.linuxbrew/Homebrew/completions/zsh $fpath)
 fi
 
 ###-tns-completion-start-###
