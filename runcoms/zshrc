@@ -83,3 +83,10 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google
 # tabtab source for jhipster package
 # uninstall by removing these lines or running `tabtab uninstall jhipster`
 [[ -f "$HOME/.config/yarn/global/node_modules/tabtab/.completions/jhipster.zsh" ]] && source "$HOME/.config/yarn/global/node_modules/tabtab/.completions/jhipster.zsh"
+
+
+function docker-inspect() {
+  docker inspect --format '{{$e := . }}{{with .NetworkSettings}} {{$e.Name}}
+  {{range $index, $net := .Networks}}{{$index}} {{.IPAddress}}
+  {{end}}{{end}}' $(docker ps -q)
+}

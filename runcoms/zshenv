@@ -20,7 +20,8 @@ if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
   export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-else
+fi
+if [[ -d "$HOME/.linuxbrew/bin" ]]; then
   export PATH=$PATH:$HOME/.linuxbrew/bin
 fi
 
