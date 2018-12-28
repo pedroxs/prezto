@@ -90,3 +90,7 @@ function docker-inspect() {
   {{range $index, $net := .Networks}}{{$index}} {{.IPAddress}}
   {{end}}{{end}}' $(docker ps -q)
 }
+
+# Show external IP address
+alias wanip='dig @resolver1.opendns.com ANY myip.opendns.com +short'
+
