@@ -40,3 +40,7 @@ export PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+# Rust
+[[ -s $HOME/.cargo/env ]] && source $HOME/.cargo/env
+

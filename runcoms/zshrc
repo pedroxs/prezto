@@ -26,8 +26,9 @@ source "${ZDOTDIR:-$HOME}/.zprezto/modules/git/external/git-flow-completion.zsh"
 setopt NO_CASE_GLOB
 setopt EXTENDED_GLOB
 
+# deprecated, use jq
 # json pretty print
-alias json='python -mjson.tool'
+#alias json='python -mjson.tool'
 
 # AWS cli completition
 if [[ -d /usr/local/aws/bin ]]; then
@@ -69,6 +70,10 @@ fi
 ###-tns-completion-end-###
 
 # vim settings
+if [ -e /usr/bin/vim ]; then 
+  alias vi='/usr/bin/vim'; 
+fi
+
 if [ -e /usr/bin/vimx ]; then 
   alias vim='/usr/bin/vimx'; 
 fi
@@ -94,3 +99,31 @@ function docker-inspect() {
 # Show external IP address
 alias wanip='dig @resolver1.opendns.com ANY myip.opendns.com +short'
 
+# AWS Cli experimental
+function sec-list-ips() {
+  local dev=sg-00853d330fc772c7a
+  local qa=sg-fa6b3d8d
+  local prod=sg-c68bccb0
+  local gid
+
+  case "$1" in
+    dev)
+      echo "$dev"
+      gid=$dev
+      ;;
+    qa)
+      echo "$qa"
+      gid=$qa
+      ;;
+    prod)
+      echo "$prod"
+      gid=$prod
+      ;;
+    *)
+      echo "Usage: $0 {dev|qa|prod}"
+      return 1
+      ;;
+  esac
+
+  aws ec2 describe-security-groups --group-ids "$gid" --query "SecurityGroups[*].{Name:Tags[0].Value,GroupName:GroupName,Id:GroupId,IpPermissions:IpPermissions[*].{IpRanges:IpRanges}}"
+}
