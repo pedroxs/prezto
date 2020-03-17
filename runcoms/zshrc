@@ -30,6 +30,18 @@ setopt EXTENDED_GLOB
 # json pretty print
 #alias json='python -mjson.tool'
 
+# Local functions
+if [[ -d "${ZDOTDIR:-$HOME}/.zprezto/zfunc" ]]; then
+  # Add to fpath
+  fpath=("${ZDOTDIR:-$HOME}/.zprezto/zfunc" $fpath)
+
+  # Load functions.
+  local pfunction_glob='^([_.]*|prompt_*_setup|README*|*~)(-.N:t)'
+  for pfunction in ${ZDOTDIR:-$HOME}/.zprezto/zfunc/$~pfunction_glob; do
+    autoload -Uz "$pfunction"
+  done
+fi
+
 # AWS cli completition
 if [[ -d /usr/local/aws/bin ]]; then
   export PATH=/usr/local/aws/bin:$PATH
