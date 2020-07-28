@@ -58,12 +58,20 @@ fi
 if [[ -d "$HOME/.zsh-nvm" ]]; then
   export NVM_LAZY_LOAD=true
   source "$HOME/.zsh-nvm/zsh-nvm.plugin.zsh"
-else
-  # npm config if no nvm detected
-  export NPM_CONFIG_PREFIX="$HOME/.npm-global"
-  if [[ ! -d "$NPM_CONFIG_PREFIX" ]]; then
-    mkdir -p "$NPM_CONFIG_PREFIX"
-  fi
+#else
+#  # npm config if no nvm detected
+#  export NPM_CONFIG_PREFIX="$HOME/.npm-global"
+#  if [[ ! -d "$NPM_CONFIG_PREFIX" ]]; then
+#    mkdir -p "$NPM_CONFIG_PREFIX"
+#  fi
+fi
+
+# nvm mac
+if [[ -d "$HOME/.nvm" ]]; then
+  export NVM_LAZY_LOAD=true
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
 
 # linux brew completition
@@ -73,6 +81,14 @@ if [[ -d "$HOME/.linuxbrew" ]]; then
 fi
 if [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
   fpath=(/home/linuxbrew/.linuxbrew/Homebrew/completions/zsh $fpath)
+fi
+
+# mac brew completition
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
 fi
 
 ###-tns-completion-start-###
