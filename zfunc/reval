@@ -1,5 +1,6 @@
 function reval() {
   rm -rf $HOME/.[CIPW]*20[12]*/c[o][n]fig/[e]val
+  rm -rf $HOME/.config/[J]??B*/[CIPW]*20[12]*/[e]val
   return 0
 }
 

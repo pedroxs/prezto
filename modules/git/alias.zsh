@@ -96,8 +96,9 @@ if ! zstyle -t ':prezto:module:git:alias' skip 'yes'; then
   alias gfa='git fetch --all'
   alias gfc='git clone'
   alias gfcr='git clone --recurse-submodules'
-  alias gfm='git pull'
-  alias gfr='git pull --rebase'
+  alias gfm='git pull --no-rebase' # merge
+  alias gfr='git pull --rebase'    # rebase
+  alias gff='git pull --ff-only'   # fast-forward only
 
   # Flow (F)
   alias gFi='git flow init'
