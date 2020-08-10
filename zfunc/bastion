@@ -1,0 +1,31 @@
+function bastion() {
+  local _group_id
+  case $1 in
+    dev)
+      _group_id=sg-00853d330fc772c7a
+      ;;
+    qa)
+      _group_id=sg-fa6b3d8d
+      ;;
+    prod)
+      _group_id=sg-c68bccb0
+      ;;
+    *)
+      echo "Choose one environment [dev|qa|prod]"
+      return 1
+      ;;
+  esac
+
+  clear_permissions $_group_id
+  aws ec2 authorize-security-group-ingress --group-id $_group_id --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges='[{CidrIp='$(wanip -4)'/32,Description="Joaquim Home"}]' \
+  && echo "$1 bastion updated"
+  return 0
+}
+
+function clear_permissions() {
+  local _ip_ranges=$(aws ec2 describe-security-groups --group-id $1 | jq '.SecurityGroups[].IpPermissions[].IpRanges[] | select(.Description=="Joaquim Home") | "{CidrIp="+.CidrIp+"}" ' | jq -s -r 'join(",")')
+  echo "Clearing the folloing IPs: $_ip_ranges"
+  aws ec2 revoke-security-group-ingress --group-id $1 --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges='['$_ip_ranges']'
+}
+
+bastion "@"
