@@ -125,7 +125,7 @@ function docker-inspect() {
 }
 
 # Show external IP address
-alias wanip='dig @resolver1.opendns.com ANY myip.opendns.com +short'
+alias wanip='dig @208.67.222.220 myip.opendns.com +short'
 
 # AWS Cli experimental
 function sec-list-ips() {
