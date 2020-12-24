@@ -17,8 +17,9 @@ function bastion() {
   esac
 
   clear_permissions $_group_id
-  aws ec2 authorize-security-group-ingress --group-id $_group_id --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges='[{CidrIp='$(wanip -4)'/32,Description="Joaquim Home"}]' \
-  && echo "$1 bastion updated"
+  local _curr_ip=$(wanip -4) 
+  aws ec2 authorize-security-group-ingress --group-id $_group_id --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges='[{CidrIp='$_curr_ip'/32,Description="Joaquim Home"}]' \
+  && echo "$1 bastion updated with IP $_curr_ip"
   return 0
 }
 
