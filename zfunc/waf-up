@@ -2,22 +2,10 @@ function waf-up() {
   [[ -z $1 ]] && { _help; return 1; }
   local ip="$1/32"
 
-  local global_br_group="60c278aa-efbb-4011-a8d8-446c6b532ead" # BR access
-  local us_east_1_br_group="83d7a789-10b2-43b4-8b05-fe23c44dc09b" # Allow access from BR
-  local global_mx_group="8be5af6e-3f1f-4a57-a8bf-2bcacdb06a5a" # Global Mexico Home Office IPs
-  local us_east_1_mx_group="452b9455-9696-42cd-95a5-c77b5ff4fead" # US East (N. Virginia) Mexico Home Office IPs
+  local global_group="0c5eebb6-87a0-47ac-99fb-6e9049c2a5ec" # used by Pepe (cleaned up regularly)
+  local us_east_1_group="c333f9ac-b0b2-488a-8da5-da6357e25d32" # used by Pepe (cleaned up regularly)
 
-  # defaults to BR groups
-  local group_region="BR"
-  local global_group=$global_br_group
-  local us_east_1_group=$us_east_1_br_group
-  if [[ ! -z $2 && $2 = 'mx' ]]; then
-    group_region="MX"
-    global_group=$global_mx_group
-    us_east_1_group=$us_east_1_mx_group
-  fi
-  
-  echo "updating WAF rules to include ip $1/32 on $group_region region groups"
+  echo "updating WAF rules to include ip $1/32 on global and local region groups"
   _mifos "$ip" "$global_group"
   _superset "$ip" "$us_east_1_group"
   return 0
@@ -34,7 +22,7 @@ function _superset() {
 }
 
 function _help() {
-  echo "Usage 'waf-up <ip> [br|mx]'"
+  echo "Usage 'waf-up <ip>'"
 }
 
 waf-up "$@"
