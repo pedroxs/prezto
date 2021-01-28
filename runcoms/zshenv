@@ -15,6 +15,9 @@ if [[ -s "$HOME/.secure/init.zsh" ]]; then
   source "$HOME/.secure/init.zsh"
 fi
 
+# OSX shell colors
+export LSCOLORS=exfxfeaeBxxehehbadacea
+
 # Linuxbrew
 if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
