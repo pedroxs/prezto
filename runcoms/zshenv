@@ -16,7 +16,8 @@ if [[ -s "$HOME/.secure/init.zsh" ]]; then
 fi
 
 # OSX shell colors
-export LSCOLORS=exfxfeaeBxxehehbadacea
+export LSCOLORS=exfxfeaeBxxehehbadacea # darck blue folders
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD # ligh blue folders
 
 # Linuxbrew
 if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
