@@ -10,8 +10,11 @@ function bastion() {
     prod)
       _group_id=sg-c68bccb0
       ;;
+    proxy)
+      _group_id=sg-0a78b0aff7abbc915
+      ;;
     *)
-      echo "Choose one environment [dev|qa|prod]"
+      echo "Choose one environment [dev|qa|prod|proxy]"
       return 1
       ;;
   esac
